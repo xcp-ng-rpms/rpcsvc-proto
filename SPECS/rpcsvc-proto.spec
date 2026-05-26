@@ -1,3 +1,7 @@
+%global package_speccommit ee22c9c1825f3d34328aac5586028307a25e990c
+%global usver 1.4
+%global xsver 2
+%global xsrel %{xsver}%{?xscount}%{?xshash}
 #
 # spec file for package rpcsvc-proto
 #
@@ -18,11 +22,11 @@
 
 Name:           rpcsvc-proto
 Version:        1.4
-Release:        15%{?dist}
+Release: %{?xsrel}%{?dist}
 Summary:        RPC protocol definitions
 License:        BSD and LGPLv2+
 Url:            https://github.com/thkukuk/rpcsvc-proto
-Source0:        https://github.com/thkukuk/rpcsvc-proto/releases/v%{version}/%{name}-%{version}.tar.xz
+Source0: rpcsvc-proto-1.4.tar.xz
 
 Conflicts: glibc-headers < 2.26.9000-36
 Conflicts: glibc-common < 2.26.9000-36
@@ -75,63 +79,9 @@ rm -f $RPM_BUILD_ROOT%{_prefix}/include/rpcsvc/rquota.[hx]
 %{_mandir}/man1/rpcgen.1*
 
 %changelog
-* Fri Jul 19 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-15
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+* Tue Jan 21 2025 XenServer Rebuild <rebuild@xenserver.com> - 1.4-2
+- CP-53310: XenServer 9 rebuild
 
-* Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-14
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+* Wed Jul 05 2023 Lin Liu <lin.liu@citrix.com> - 1.4-1
+- First imported release
 
-* Mon Jan 22 2024 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-13
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
-
-* Fri Jul 21 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-12
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
-
-* Fri Jan 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-11
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
-
-* Sat Jul 23 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-10
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
-
-* Fri Jan 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-9
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
-
-* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-8
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-7
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-6
-- Second attempt - Rebuilt for
-  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
-* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
-* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
-
-* Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
-
-* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
-
-* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.4-1
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Tue May 29 2018 Steve Dickson <steved@redhat.com>  1.4-0
-- Updated to the latest upstream release: v1.4 (bz 1559181)
-
-* Tue Mar 27 2018 Björn Esser <besser82@fedoraproject.org> - 1.3.1-4
-- Enable MT code as libtirpc supports it
-
-* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.1-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
-
-* Tue Jan 23 2018 Steve Dickson <steved@redhat.com>  1.3.1-2
-- Remove rquota.[hx] headers which are provided by quota (bz 1537133)
-
-* Wed Jan  17 2018 Steve Dickson <steved@redhat.com>  1.3.1-1
-- Initial commit (bz 1532364)
